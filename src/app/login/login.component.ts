@@ -1,5 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -20,19 +22,36 @@ pswd="";
   login(){
     var acno=this.acno
     var pswd=this.pswd
-    var userDetails=this.userDetails
-    if(acno in userDetails){
-      if(pswd==userDetails[acno]['password']){
-        alert('login successful')
-      }
-      else{
-        alert('invalid password')
-      }
+    const result=this.ds.login(acno,pswd);
+    if(result){
+      alert('login successful');
+      this.router.navigateByUrl('dashBoard')
     }
     else{
-      alert('invalid user details')
+      alert('login failed')
     }
   }
+
+  //router-variable of login
+  //Router-it is a class of 'navigateByUrl'
+
+
+  // login(a:any,p:any){
+  //   var acno=a.value
+  //   var pswd=p.value
+  //   var userDetails=this.userDetails
+  //   if(acno in userDetails){
+  //     if(pswd==userDetails[acno]['password']){
+  //       alert('login successful')
+  //     }
+  //     else{
+  //       alert('invalid password')
+  //     }
+  //   }
+  //   else{
+  //     alert('invalid user details')
+  //   }
+  // }
 
   acnoChange(event:any){
     this.acno=event.target.value
@@ -52,7 +71,7 @@ pswd="";
     1002:{acno:1002,username:'adarsh',password:1002,balance:2000}
   }
 
-  constructor() { } // 1st exicute-special member fcn.automatically invokes when an obj is created
+  constructor(private router:Router,private ds:DataService) { } // 1st exicute-special member fcn.automatically invokes when an obj is created
 
   ngOnInit(): void {// 2nd exicute -lifrcycle hooks of angular-initial process of component initilization
   }

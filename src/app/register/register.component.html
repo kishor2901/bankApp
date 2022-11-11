@@ -1,0 +1,22 @@
+<form [formGroup]="registerForm" class="container border border-secondary w-25 p-5 mt-5 bg-light">
+    <h1 class="text-center mt-5">Register</h1>
+    <div class="mb-3">
+        <input formControlName="uname" type="text" name="uname" id="reg_uname" placeholder="Username">
+    </div>
+    <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color:red">Invalid data</div>
+    
+    <div class="mb-3">
+        <input formControlName="acno" type="text" name="acno" id="reg_acno" placeholder="Account number">
+    </div>
+    <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" style="color:red">Invalid data</div>
+    
+    <div class="mb-3">
+        <input formControlName="pswd" type="password" name="password" id="reg_pswd" placeholder="password">
+    </div>
+    <div *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched" style="color:red">Invalid data</div>
+    
+    <button type="button" class="btn btn-primary" (click)="register()">register</button>
+</form>
+<div class="text-center fs-5 mt-3">
+    <a href="#">forgot password</a> or <a routerLink="">Login</a>
+</div>

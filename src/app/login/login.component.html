@@ -2,13 +2,13 @@
     <h1 class="text-center mt-5">Login</h1>
     <h6>{{aim}}</h6>
     <div class="mb-3">
-        <input (change)="acnoChange($event)" type="text" name="acno" id="login_acno" [placeholder]="accounts">
+        <input [(ngModel)]="acno" type="text" name="acno" id="login_acno" [placeholder]="accounts">
     </div>
     <div class="mb-3">
-        <input (change)="pswdChange($event)" type="password" name="password" id="login_pswd" placeholder="password">
+        <input [(ngModel)]="pswd" type="password" name="password" id="login_pswd" placeholder="password">
     </div>
     <button type="button" class="btn btn-primary" (click)="login()">Login</button>
 </form>
 <div class="text-center fs-5 mt-3">
-    <a href="#">forgot password</a> or <a href="./signup.html">signup</a>
+    <a href="#">forgot password</a> or <a routerLink="register">signup</a>
 </div>
